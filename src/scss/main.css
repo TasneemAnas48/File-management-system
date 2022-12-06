@@ -1,0 +1,22 @@
+*:focus, *:focus-visible {
+  outline: none !important;
+}
+
+:root {
+  --main-color: #264da1;
+  --second-color: #eff0f5;
+  --gray-medium: #707070;
+}
+
+[theme="dark"] {
+  --main-color: rgb(105, 5, 77);
+  --second-color: #eff0f5;
+  --gray-medium: #707070;
+}
+
+[theme="light"] {
+  --main-color: #264da1;
+  --second-color: #eff0f5;
+  --gray-medium: #707070;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,196 @@
+.dashboard .add{
+    padding: 5px !important
+}
+.card-header{
+    font-size: 20px;
+    border-top-left-radius: 30px !important;
+    border-top-right-radius: 30px !important;
+    background-color: white !important;
+    padding: 15px !important;
+    margin-bottom: 10px !important;
+    height: 70px;
+}
+.custom-card {
+    box-shadow: 0 1px 10px rgb(32 33 36 / 15%);
+    border-radius: 30px !important;
+}
+
+.card-title {
+    font-size: 16px;
+    color: var(--main-color);
+    text-align: right;
+}
+.card-text{
+    text-align: right;
+    font-size: 14px;
+    color: var(--gray-medium);
+}
+
+.card-img,
+.card-img-top {
+    border-top-left-radius: 30px !important;
+    border-top-right-radius: 30px !important;
+}
+
+.dashboard .body .mini-card {
+    margin: 0px !important;
+    padding: 20px !important;
+    height: 200px !important;
+    width: 260px;
+}
+
+.dashboard .container {
+    padding: 5px 25px 25px 25px !important;
+}
+
+.dashboard .color {
+    color: var(--main-color);
+}
+
+.dashboard .row-header {
+    align-items: center;
+    justify-content: center;
+    margin-top: -30px !important;
+}
+
+.dashboard .card-footer {
+    color: var(--main-color);
+    background: none;
+    border-top: none !important;
+}
+
+.dashboard .v-data-table__wrapper {
+    border: none !important
+}
+
+.dashboard .button-succefull {
+    border: 1px solid #40C93B;
+    background-color: #ffffff;
+    color: #40C93B !important;
+    border-radius: 20px;
+    width: 101.23px !important;
+}
+
+.dashboard .button-succefull:hover {
+    border: 1px solid #40C93B;
+    background-color: #40C93B;
+    color: #ffffff !important;
+    cursor: auto !important;
+}
+
+.dashboard .button-prograse {
+    border: 1px solid #707070;
+    background-color: #ffffff;
+    color: #707070 !important;
+    border-radius: 20px;
+}
+
+.dashboard .button-prograse:hover {
+    border: 1px solid #707070;
+    background-color: #707070;
+    color: #ffffff !important;
+    cursor: auto !important;
+}
+
+.dashboard .add {
+    margin-right: 30px;
+}
+
+.view .v-data-table-header th{
+    color: var(--main-color) !important;
+    font-size: 15px !important;
+}
+.view .v-btn {
+    letter-spacing: 0px !important;
+}
+
+.view .v-select__slot {
+    /* border: 1px solid #707070; */
+    border-radius: 22px;
+    width: 60px !important;
+    margin-right: 6px;
+}
+
+.view .theme--light.v-text-field>.v-input__control>.v-input__slot:before,
+.view .v-text-field.v-input--is-focused>.v-input__control>.v-input__slot:after {
+    display: none;
+}
+
+.view .v-data-footer__select .v-select__selections .v-select__selection--comma {
+    font-size: 13px;
+    margin-right: 11px;
+}
+
+.view .v-data-footer {
+    font-size: 13px;
+}
+
+.view .v-pagination__navigation {
+    box-shadow: 0 4px 9px -2px rgb(0 0 0 / 24%), 0 -1px 3px 0 rgb(0 0 0 / 14%), 0 -2px 14px 0 rgb(0 0 0 / 12%) !important;
+}
+
+.view .v-menu__content {
+    border-radius: 20px !important;
+}
+
+
+.view .button-unactive {
+    border: 1px solid #707070;
+    background-color: #ffffff;
+    color: #707070 !important;
+    border-radius: 20px;
+    width: 80px !important;
+    font-size: 15px;
+    padding: 4px;
+}
+
+.view .button-unactive:hover {
+    border: 1px solid #707070;
+    background-color: #707070;
+    color: #ffffff !important;
+    cursor: auto !important;
+}
+
+
+.view .button-active {
+    border: 1px solid #40C93B;
+    background-color: #ffffff;
+    color: #40C93B !important;
+    border-radius: 20px;
+    width: 80px !important;
+    font-size: 15px;
+    padding: 4px;
+}
+.view .button-active:hover {
+    border: 1px solid #40C93B;
+    background-color: #40C93B;
+    color: #ffffff !important;
+    cursor: auto !important;
+}
+.dashboard .v-application{
+    border-radius: 30px;
+}
+
+.activee {
+    box-shadow: 1px 0px 14px 8px rgb(79 81 181 / 35%) !important;
+}
+
+.report:hover {
+    box-shadow: 1px 0px 14px 8px rgb(79 81 181 / 35%) !important;
+    transition: all 0.3s;
+}
+.my-table {
+    border-radius: 30px !important;
+}
+
+.classification{
+    padding: 5px 8px 5px 8px;
+    background-color: var(--second-color);
+    border-radius: 20px;
+    margin: 2px;
+}
+.dashboard .icon-report{
+    color: var(--main-color);
+    margin: 30px;
+    font-size: 75px;
+}

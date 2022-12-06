@@ -1,0 +1,138 @@
+.login body{
+    padding-right: 0px !important;
+}
+
+.login .v-input__slot {
+    border: 1px solid #ced4da;
+    background: white !important;
+    border-radius: 30px !important;
+}
+
+.login .side-left {
+    position: relative;
+    box-shadow: 0 1px 10px rgb(32 33 36 / 15%);
+    border-radius: 30px;
+    background-color: white;
+    float: left;
+    height: 585px;
+    margin: 20px;
+}
+
+.login .side-left .img {
+    max-width: 100% !important;
+}
+
+.login {
+    background: white;
+    margin: 50px;
+    border: none;
+    border-radius: 30px;
+    margin-left: 150px;
+    box-shadow:  0 1px 10px rgb(32 33 36 / 15%);
+    height: 550px;
+}
+.side-left{
+    box-shadow: none !important;
+    height: 300px !important;
+}
+.login .create{
+    background-color: white !important;
+    color: var(--main-color) !important;
+    border: none !important;
+}
+.login .button-login{
+    text-align: right;
+    width: 374px !important;
+    font-size: 30px !important;
+}
+.login .top-button{
+    margin-top: 70px;
+    margin-right: 60px;
+}
+.login .form-input {
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.login .label-input {
+    text-align: right;
+    margin-right: 30px;
+}
+
+.login1 .form-row {
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.login .line {
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+
+.login .theme--light.v-application {
+    background: transparent !important;
+}
+
+.login .v-input__slot {
+    height: 45px !important;
+    box-shadow: none !important;
+    min-height: 45px !important;
+}
+
+.login .v-text-field.v-text-field--solo .v-label {
+    left: auto !important;
+}
+
+.login .custom-control-label::before {
+    height: 20px !important;
+    width: 20px !important;
+}
+
+.login .custom-control-label::after {
+    top: 2px !important;
+    left: -29px !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.login .custom-radio .custom-control-label::before {
+    top: 2px !important;
+    margin-left: -5px !important;
+}
+
+.login .custom-control-label::before {
+    background-color: white !important;
+    border: var(--main-color) solid 1px !important;
+}
+
+.login .buttons {
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width: 1160px) {
+    .login .v-icon {
+        top: -19px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .login .v-icon {
+        top: 1px !important;
+        left: 33px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .login {
+        height: 650px !important;
+    }
+}
+@media (min-width: 992px) {
+    .login {
+        height: 580px !important;
+    }
+}

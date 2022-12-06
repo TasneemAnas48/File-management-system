@@ -1,0 +1,17 @@
+@import "global/reset";
+
+:root{
+    --main-color: #0a66c2;
+    --second-color:  #dee9f7b6;
+    --gray-medium: #707070;
+}
+[theme="dark"] {
+    --main-color: #0f4281;
+    --second-color: #dee9f7b6;
+    --gray-medium: #707070;
+}
+[theme="light"] {
+    --main-color: #0a66c2;
+    --second-color:  #dee9f7b6;
+    --gray-medium: #707070;
+}

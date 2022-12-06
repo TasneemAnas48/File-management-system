@@ -1,0 +1,105 @@
+.navbar h6{
+    font-size: 15px;
+}
+.navbar img {
+    width: 40%;
+}
+
+.navbar .badge {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    background: orangered;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -3px;
+    right: 0px;
+    transition: all .3s;
+    font-weight: normal;
+    font-size: 11px;
+    padding-top: 4px;
+    color: white;
+}
+
+.dropdown .dropdown-menu {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+.navbar .card-header {
+    color: white;
+    background-color: var(--main-color) !important;
+    text-align: right;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+    box-shadow: 0 7px 7px rgb(32 33 36 / 15%);
+    height: 60px;
+}
+
+.navbar .card-text {
+    padding: 10px 20px 10px 20px;
+}
+
+.navbar .dropdown-divider {
+    margin: 0px;
+}
+
+.navbar .item{
+    margin-bottom: 5px;
+}
+
+.navbar .item:hover {
+    background-color: #ebebeb96;
+    /* cursor: pointer; */
+}
+
+.navbar .right {
+    height: 73px;
+    align-content: center;
+}
+
+.navbar .dropdown {
+    margin-right: 30px;
+    width: 50px;
+}
+
+.navbar .dropdown-menu {
+    padding-top: 0px;
+    width: 300px;
+    left: -250px;
+    box-shadow: 0 1px 10px rgb(32 33 36 / 15%);
+    border-radius: 20px;
+    border: none;
+    max-height: 530px;
+    overflow: auto;
+}
+
+.navbar .fa-bell {
+    color: var(--main-color);
+    font-size: 25px;
+    margin: 10px 10px 10px 50px !important;
+}
+
+.navbar .fa-user {
+    color: var(--main-color);
+    font-size: 25px;
+    margin: 10px 10px 10px 50px !important;
+}
+
+.navbar {
+    margin: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 1px 10px rgb(32 33 36 / 15%);
+}
+.navbar a:hover{
+    text-decoration: none !important;
+}

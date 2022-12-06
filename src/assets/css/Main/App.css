@@ -1,0 +1,245 @@
+
+@media (max-width: 992px) {
+    .label-input {
+        text-align: right !important;
+    }
+}
+
+.theme--light.v-text-field>.v-input__control>.v-input__slot:before,
+.v-text-field>.v-input__control>.v-input__slot:after {
+    display: none !important;
+}
+
+.v-input__slot:active,
+.v-input__slot:focus-within {
+    border-color: var(--main-color) !important;
+}
+
+.mdi-camera::before {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.v-input__prepend-outer {
+    display: none;
+}
+
+.image {
+    position: absolute;
+    top: 50%;
+}
+
+.body .card {
+    height: auto;
+    box-shadow: 0 1px 10px rgb(32 33 36 / 15%);
+    border-radius: 30px !important;
+    margin: 20px;
+}
+
+.body .card-header {
+    font-size: 20px;
+    padding: 15px;
+    border-top-left-radius: 30px !important;
+    border-top-right-radius: 30px !important;
+    background-color: white;
+    margin-bottom: 10px;
+    height: 70px;
+}
+
+.add {
+    padding-right: 10px;
+    color: var(--main-color);
+}
+
+.button-view {
+    border-radius: 20px !important;
+    background-color: var(--main-color) !important;
+    font-size: 17px !important;
+    border-color: var(--main-color) !important;
+}
+
+.button-add {
+    border-radius: 20px !important;
+    background-color: var(--main-color) !important;
+    font-size: 17px !important;
+    border-color: var(--main-color) !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-left: 35px;
+}
+.btn:focus{
+    box-shadow: 0px 0px 3px 4px var(--second-color) !important;
+}
+
+.form-input {
+    margin-right: 40px;
+}
+
+.input-field {
+    border-radius: 30px !important;
+    height: 45px !important;
+}
+
+.form-control:focus {
+    border-color: var(--main-color) !important;
+    box-shadow: 0 0 0 2px rgba(0, 26, 255, 0.03) !important;
+}
+
+.discription {
+    height: 100px !important;
+}
+
+.label-input {
+    font-size: 17px;
+    color: var(--gray-medium);
+    margin-left: 20px;
+}
+
+.form-row {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.img {
+    border: none !important;
+    max-width: 70% !important;
+}
+.v-input__icon--clear{
+    margin-top: -7px;
+}
+
+.body-page .line {
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.body-page .timeline {
+    height: 250px;
+    margin: 0em;
+    line-height: 118px;
+    position: relative;
+    text-align: center;
+}
+
+.body-page .timeline:before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    top: 54%;
+    left: 10%;
+    height: 3px;
+    margin-top: -77px;
+    background: var(--second-color);
+}
+
+.body-page .event-active {
+    width: 55px;
+    height: 55px;
+    position: relative;
+    margin: 0 50px;
+    display: inline-block;
+    background: var(--second-color);
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.body-page .event {
+    width: 10px;
+    height: 40px;
+    position: relative;
+    margin: 0 50px;
+    display: inline-block;
+    background: transparent;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+
+.body-page .detail {
+    position: absolute;
+    line-height: 1em;
+    white-space: nowrap;
+    left: 100%;
+}
+
+.body-page .event-active:before,
+.body-page .event:before {
+    top: 43%;
+    content: "";
+    position: absolute;
+    left: 49%;
+    margin-left: -3px;
+    width: 7px;
+    background: var(--main-color);
+    height: 7px;
+    border-radius: 50%;
+}
+
+
+.button-view {
+    border-radius: 20px !important;
+    background-color: var(--main-color) !important;
+    font-size: 15px !important;
+    border-color: var(--main-color) !important;
+}
+
+.icon-button {
+    color: var(--second-color);
+    font-size: 15px;
+    float: left;
+    margin-top: 6px;
+    margin-right: 6px;
+}
+
+.row-bottom {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.v-menu__content{
+    z-index: 1000 !important;
+}
+.icon-button-left {
+    color: var(--second-color);
+    font-size: 15px;
+    float: left;
+    margin-top: 6px;
+    margin-right: 6px;
+}
+
+.icon-button-right {
+    color: var(--second-color);
+    font-size: 15px;
+    float: right;
+    margin-top: 6px;
+    margin-left: 6px;
+}
+
+
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: var(--main-color) !important;
+    border-color: var(--main-color) !important;
+}
+
+.custom-control-input:not(:disabled):active~.custom-control-label::before {
+    background-color: var(--main-color) !important;
+    border-color: var(--main-color) !important;
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+    box-shadow: none !important;
+}
+
+.custom-control-label::before {
+    height: 1.3rem !important;
+}
+
+
+.custom-control {
+    top: -2px;
+}
+
+.custom-control-label {
+    cursor: pointer;
+}
