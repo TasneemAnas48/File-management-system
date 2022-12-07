@@ -5,11 +5,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        ip:'192.168.1.104:8000/',
+        ip:'192.168.43.244:8000/',
         id: '',
         name: '',
         email:'',
         token:'',
+        role:'',
     },
     getters: {},
     mutations: {},

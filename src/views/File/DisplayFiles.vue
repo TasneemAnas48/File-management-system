@@ -6,6 +6,9 @@
                     <div class="d-flex justify-content-between align-items-center add">
                         ملفاتي
                         <div class="d-flex justify-content-end ">
+                            <router-link to="/file/admin/all" style="margin-left: 10px" v-if="role=='admin'" >
+                                <b-button class="button-view">جميع ملفات النظام</b-button>
+                            </router-link>
                             <router-link to="/file/check-in" style="margin-left: 10px">
                                 <b-button class="button-view">حجز عدة ملفات</b-button>
                             </router-link>
@@ -184,6 +187,7 @@ export default {
             file: '',
             edit_id: null,
             url:'',
+            role:'',
         };
     },
     validations() {
@@ -275,6 +279,7 @@ export default {
         }
     },
     mounted() {
+        this.role = localStorage.getItem('role')
         this.getData()
         this.username = localStorage.getItem("name")
     },

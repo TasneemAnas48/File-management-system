@@ -121,23 +121,25 @@ export default {
                 .then((res) => {
                     console.log(res.data)
                     if (res.status == 200){
-                        this.addtoStore(res.data.token, res.data.user.id, res.data.user.username, res.data.user.email)
-                        this.addlocalStorage(res.data.token, res.data.user.id, res.data.user.username, res.data.user.email)
+                        this.addtoStore(res.data.token, res.data.user.id, res.data.user.username, res.data.user.email, res.data.user.role)
+                        this.addlocalStorage(res.data.token, res.data.user.id, res.data.user.username, res.data.user.email, res.data.user.role)
                         this.$router.replace({ name: 'file' })
                     }
                 })
         },
-        addtoStore(token, id, name, email){
+        addtoStore(token, id, name, email, role){
             this.$store.state.token = token
             this.$store.state.id = id
             this.$store.state.name = name
             this.$store.state.email = email
+            this.$store.state.role = role
         },
-        addlocalStorage(token, id, name, email){
+        addlocalStorage(token, id, name, email, role){
             localStorage.setItem("token", token)
             localStorage.setItem("id", id)
             localStorage.setItem("name", name)
             localStorage.setItem("email", email)
+            localStorage.setItem("role", role)
         }
     },
 };

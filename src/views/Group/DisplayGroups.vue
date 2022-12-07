@@ -5,10 +5,15 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center add">
                         مجموعاتي
-                        <div class="d-flex justify-content-end ">
-                            <router-link to="/group/all" style="margin-left:15px">
-                                <b-button class="button-view">جميع المجموعات</b-button>
+                        <div class="d-flex justify-content-end">
+                            <router-link to="/group/admin/all" style="margin-left:15px" v-if="role=='admin'">
+                                <b-button class="button-view"> جميع مجموعات النظام</b-button>
                             </router-link>
+
+                            <router-link to="/group/all" style="margin-left:15px">
+                                <b-button class="button-view">مجموعات مشتركة فيها</b-button>
+                            </router-link>
+
                             <!-- <router-link to="/group/create"  > -->
                                 <b-button class="button-view" @click="dialog=true">إنشاء مجموعة</b-button>
                                 <v-dialog v-model="dialog" max-width="500px">
@@ -158,7 +163,8 @@ export default {
             editedIndex: -1,
             delete: '',
             dialogYes: false,
-            dialogNo: false
+            dialogNo: false,
+            role:'',
         };
     },
     validations() {
@@ -233,6 +239,7 @@ export default {
 
     },
     mounted() {
+        this.role = localStorage.getItem("role")
         this.getData()
     },
     components: {
