@@ -33,7 +33,7 @@
                                     </v-card-actions>
                                 </v-card>
                             </v-dialog>
-                            <v-dialog v-model="dialogNo" max-width="500px">
+                            <v-dialog v-model="dialogNo" max-width="600px">
                                 <v-card>
                                     <v-spacer></v-spacer>
                                     <v-card-title class="justify-content-center" style="padding-top: 30px"> 
@@ -47,10 +47,6 @@
                                     </v-card-actions>
                                 </v-card>
                             </v-dialog>
-                            </template>
-                            <template v-slot:[`item.status_id`]="{ item }">
-                                <div v-if="(item.status_id == 1)"> حر</div>
-                                <div v-else-if="(item.status_id == 2)"> محجوز</div>
                             </template>
                             <template v-slot:[`item.user`]="{ item }">
                                 <div v-if="item.status == 'محجوز'"> {{item.user}}</div>
@@ -85,7 +81,7 @@ export default {
             headers: [
                 { text: 'رقم الملف', value: 'id', align: 'center', },
                 { text: 'اسم الملف', value: 'name', align: 'center', },
-                { text: 'حالة الملف', value: 'status_id', align: 'center', },
+                { text: 'حالة الملف', value: 'status', align: 'center', },
                 { text: 'المستخدم الذي حجز الملف', value: 'user', align: 'center', },
             ],
             rows: [],
@@ -110,23 +106,30 @@ export default {
         checkIn(){
             this.files =  this.files.map(x => x.id)
             console.log(this.files)
-
             const token = localStorage.getItem("token")
+            const self = this
             this.axios.post("http://"+this.$store.state.ip+"api/file/check_many_files", 
             {
                 ids: this.files
             }, 
             { headers: {'Authorization': `Bearer ${token}`}})
                 .then((res) => {
-                    console.log(res)
+                    // console.log(res)
                     if (res.status == 200)
                         this.dialogYes = true
-                    else
-                        this.dialogNo = true
                     this.getData()
-                    this.files=[]
+                    this.files = []
+                }).catch(function (error) {
+                    if (error.response) {
+                        // console.log(error.response.data)
+                        self.dialogNo = true
+                        self.files = []
+                    }
                 })
         },
+    },
+    error(){
+        this.dialogNo = true
     },
     mounted() {
         this.getData()

@@ -81,7 +81,6 @@ export default {
                     console.log(res.data)
                 });
         }
-
     },
     mounted() {
         this.getData()

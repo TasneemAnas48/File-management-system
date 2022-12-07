@@ -219,11 +219,8 @@ export default {
                         this.dialog = false
                         this.getData()
                     }
-                })
+                }) 
         },
-        // getId(item){
-        //     console.log(item.name)
-        // },
         getData() {
             const token = localStorage.getItem("token")
             this.axios.get("http://"+this.$store.state.ip+"api/collection/show_my_collection", { headers: {'Authorization': `Bearer ${token}`}})
