@@ -88,7 +88,7 @@
                             </template>
                             <template v-slot:[`item.read`]="{ item }">
                                 <a  @click="read(item)" :href="url" >
-                                    <b-button class="button-read" v-if="item.status == 'حر'"> قراءة
+                                    <b-button class="button-read" v-if="(item.status == 'حر') || ((item.status == 'محجوز') && (username == item.user_name))"> قراءة
                                     </b-button>
                                 </a>
                             </template>
@@ -97,7 +97,6 @@
                                 </b-button>
                             </template>
                         </v-data-table>
-
                         <div v-else>
                             <v-progress-circular :size="70" :width="7" color="var(--main-color)" indeterminate
                                 style="margin-top: 100px; margin-bottom: 150px;">
@@ -188,6 +187,7 @@ export default {
             edit_id: null,
             url:'',
             role:'',
+            user_id:null,
         };
     },
     validations() {
@@ -232,7 +232,7 @@ export default {
         },
         sendIdDeleted() {
             const token = localStorage.getItem("token")
-            this.axios.delete("http://" + this.$store.state.ip + "api/file/" + this.delete.id,
+            this.axios.delete("http://" + this.$store.state.ip + "api/file/" + this.delete.id + "/" + this.user_id,
                 { headers: { 'Authorization': `Bearer ${token}` } })
                 .then((res) => {
                     console.log(res.data)
@@ -248,7 +248,7 @@ export default {
             this.file = files
         },
         read(item){
-            let url = "http://" + this.$store.state.ip + "uploads/files/hh/" + item.name
+            let url = "http://" + this.$store.state.ip + "uploads/files/" + item.name
             this.url = url
             return url
         },
@@ -259,13 +259,12 @@ export default {
         editFile() {
             const formData = new FormData()
             formData.append('file', this.file)
-            formData.append('id', this.edit_id)
-            // const token = localStorage.getItem("token")
-            // this.axios.post("http://"+this.$store.state.ip+"api/file", formData, { headers: {'Authorization': `Bearer ${token}`}})
-            //     .then((res) => {
-            //         console.log(res)
-
-            //     })
+            formData.append('user_id', this.user_id)
+            const token = localStorage.getItem("token")
+            this.axios.post("http://"+this.$store.state.ip+"api/file/update/" + this.edit_id, formData, { headers: {'Authorization': `Bearer ${token}`}})
+                .then((res) => {
+                    console.log(res)
+                })
         },
         getData() {
             const token = localStorage.getItem("token")
@@ -282,6 +281,7 @@ export default {
         this.role = localStorage.getItem('role')
         this.getData()
         this.username = localStorage.getItem("name")
+        this.user_id = localStorage.getItem("id")
     },
     components: {
     },
