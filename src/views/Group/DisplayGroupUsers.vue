@@ -141,7 +141,7 @@ export default {
                 { text: 'ادارة', value: 'mangement', align: 'center', },
             ],
             rows: [],
-            status: 'OK',
+            status: '',
             name: '',
             users: [],
             user_id: null,
@@ -229,6 +229,7 @@ export default {
             const token = localStorage.getItem("token")
             this.axios.get("http://" + this.$store.state.ip + "api/collection/show_all_users_in_collection/"+ this.collection_id, { headers: { 'Authorization': `Bearer ${token}` } })
                 .then(res => {
+                    this.status = res.statusText
                     this.rows = res.data
                     // this.status = res.statusText
                     console.log(this.rows)

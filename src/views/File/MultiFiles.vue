@@ -5,7 +5,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center add">
                         حجز عدة ملفات
-                        <b-button class="button-view" @click="checkIn" v-if="(files.length != 0)"> حجز</b-button>
+                        <b-button class="button-view" @click="checkIn" v-if="(files.length != 0)"> حجز {{files.length}}</b-button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -18,7 +18,10 @@
                         <v-data-table class="col-lg-12 my-table" item-key="id" show-select v-model="files" :headers="headers" :items="rows" :search="search"
                             :page.sync="page" @page-count="pageCount = $event" :hide-default-footer="true"
                             v-if="status == 'OK'">
-                        
+                            <template v-slot:[`item.status_id`]="{ item }">
+                                <div v-if="(item.status_id == 1)"> حر</div>
+                                <div v-else-if="(item.status_id == 2)"> محجوز</div>
+                            </template>
                         </v-data-table>
                         <div v-else>
                             <v-progress-circular :size="70" :width="7" color="var(--main-color)" indeterminate
@@ -49,11 +52,11 @@ export default {
             headers: [
                 { text: 'رقم الملف', value: 'id', align: 'center', },
                 { text: 'اسم الملف', value: 'name', align: 'center', },
-                { text: 'حالة الملف', value: 'status', align: 'center', },
+                { text: 'حالة الملف', value: 'status_id', align: 'center', },
                 { text: 'المستخدم الذي حجز الملف', value: 'user_name', align: 'center', },
             ],
             rows: [],
-            status: 'OK',
+            status: '',
             files: [],
         };
     },
@@ -64,18 +67,19 @@ export default {
             this.axios.get("http://" + this.$store.state.ip + "api/collection/all_file_to_reserve", 
                 { headers: { 'Authorization': `Bearer ${token}` } })
                 .then((res) => {
+                    this.status = res.statusText
                     this.rows = res.data
-                    // console.log(res.data)
-                });
+                    console.log(res.data)
+                })
         },
         checkIn(){
             this.files =  this.files.map(x => x.id)
             console.log(this.files)
+            const token = localStorage.getItem("token")
         },
     },
     mounted() {
         this.getData()
-        
     },
     components: {
     },

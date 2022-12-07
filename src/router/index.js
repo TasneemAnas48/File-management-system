@@ -10,6 +10,7 @@ import DisplayGroupFiles from "../views/Group/DisplayGroupFiles.vue";
 import DisplayGroupUsers from "../views/Group/DisplayGroupUsers.vue";
 import AllGroup from "../views/Group/AllGroup.vue";
 import MultiFiles from "../views/File/MultiFiles.vue";
+import DisplayAllGroupFiles from "../views/Group/DisplayAllGroupFiles";
 
 Vue.use(VueRouter);
 
@@ -58,6 +59,11 @@ const routes = [
         path: "/file/check-in",
         name: "file-check-in",
         component: MultiFiles,
+    },
+    {
+        path: "/all-group/:id/files",
+        name: "all-group-file",
+        component: DisplayAllGroupFiles,
     },
     
 ];

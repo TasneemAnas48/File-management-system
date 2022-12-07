@@ -118,7 +118,7 @@ export default {
                 { text: 'الغاء حجز', value: 'check_out', align: 'center', },
             ],
             rows: [],
-            status: 'OK',
+            status: '',
             dialogDelete: false,
             editedIndex: -1,
             delete: '',
@@ -182,8 +182,9 @@ export default {
             this.axios.get("http://" + this.$store.state.ip + "api/file", 
                 { headers: { 'Authorization': `Bearer ${token}` } })
                 .then((res) => {
+                    this.status = res.statusText
                     this.rows = res.data.data
-                    console.log(res.data.data)
+                    console.log(res)
                 });
         }
     },

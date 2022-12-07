@@ -62,25 +62,23 @@ export default {
                 { text: 'إدارة', value: 'mangement', align: 'center', },
             ],
             rows: [],
-            status: 'OK',
+            status: '',
             temp: [],
         };
     },
 
     methods: {
         routeToFile(item){
-            this.$router.replace({ name: 'group-file', params: {id: item.id} })
+            this.$router.replace({ name: 'all-group-file', params: {id: item.id} })
         },
 
         getData() {
             const token = localStorage.getItem("token")
             this.axios.get("http://"+this.$store.state.ip+"api/collection/show_all_collection", { headers: {'Authorization': `Bearer ${token}`}})
                 .then(res => {
+                    this.status = res.statusText
+                    this.rows = res.data
                     console.log(res.data)
-                    // this.rows = res.data.public_collection
-                    this.temp = res.data.public_collection
-                    this.temp += res.data.my_collection
-                    console.log(this.temp)
                 });
         }
 

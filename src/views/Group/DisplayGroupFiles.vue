@@ -143,7 +143,7 @@ export default {
                 { text: 'ادارة', value: 'mangement', align: 'center', },
             ],
             rows: [],
-            status: 'OK',
+            status: '',
             name: '',
             files: [],
             file_id: null,
@@ -240,6 +240,7 @@ export default {
             const token = localStorage.getItem("token")
             this.axios.get("http://" + this.$store.state.ip + "api/collection/show_my_collection_file/" + this.collection_id , { headers: { 'Authorization': `Bearer ${token}` } })
                 .then(res => {
+                    this.status = res.statusText
                     this.rows = res.data
                     console.log(this.rows)
                 });

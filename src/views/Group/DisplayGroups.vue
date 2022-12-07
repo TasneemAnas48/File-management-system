@@ -151,7 +151,7 @@ export default {
                 { text: 'إدارة', value: 'mangement', align: 'center', },
             ],
             rows: [],
-            status: 'OK',
+            status: '',
             dialog: false,
             name:'',
             dialogDelete:false,
@@ -228,6 +228,7 @@ export default {
             const token = localStorage.getItem("token")
             this.axios.get("http://"+this.$store.state.ip+"api/collection/show_my_collection", { headers: {'Authorization': `Bearer ${token}`}})
                 .then(res => {
+                    this.status = res.statusText
                     this.rows = res.data
                     console.log(res.data)
                 });
