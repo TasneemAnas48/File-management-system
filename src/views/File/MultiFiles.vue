@@ -18,9 +18,42 @@
                         <v-data-table class="col-lg-12 my-table" item-key="id" show-select v-model="files" :headers="headers" :items="rows" :search="search"
                             :page.sync="page" @page-count="pageCount = $event" :hide-default-footer="true"
                             v-if="status == 'OK'">
+                            <template v-slot:top>
+                                <v-dialog v-model="dialogYes" max-width="500px">
+                                <v-card>
+                                    <v-spacer></v-spacer>
+                                    <v-card-title class="justify-content-center" style="padding-top: 30px"> 
+                                        تم حجز الملفات بنجاح
+                                    </v-card-title>
+                                    <v-card-actions style="padding-bottom: 30px">
+                                        <v-spacer></v-spacer>
+                                        <v-btn color="var(--main-color)" text @click="(dialogYes = false)">موافق 
+                                        </v-btn>
+                                        <v-spacer></v-spacer>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-dialog>
+                            <v-dialog v-model="dialogNo" max-width="500px">
+                                <v-card>
+                                    <v-spacer></v-spacer>
+                                    <v-card-title class="justify-content-center" style="padding-top: 30px"> 
+                                        لا يمكنك حجز الملفات لانها محجوزة من قبل مستخدم اخر
+                                    </v-card-title>
+                                    <v-card-actions style="padding-bottom: 30px">
+                                        <v-spacer></v-spacer>
+                                        <v-btn color="var(--main-color)" text @click="(dialogNo = false)">موافق 
+                                        </v-btn>
+                                        <v-spacer></v-spacer>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-dialog>
+                            </template>
                             <template v-slot:[`item.status_id`]="{ item }">
                                 <div v-if="(item.status_id == 1)"> حر</div>
                                 <div v-else-if="(item.status_id == 2)"> محجوز</div>
+                            </template>
+                            <template v-slot:[`item.user`]="{ item }">
+                                <div v-if="item.status == 'محجوز'"> {{item.user}}</div>
                             </template>
                         </v-data-table>
                         <div v-else>
@@ -53,11 +86,13 @@ export default {
                 { text: 'رقم الملف', value: 'id', align: 'center', },
                 { text: 'اسم الملف', value: 'name', align: 'center', },
                 { text: 'حالة الملف', value: 'status_id', align: 'center', },
-                { text: 'المستخدم الذي حجز الملف', value: 'user_name', align: 'center', },
+                { text: 'المستخدم الذي حجز الملف', value: 'user', align: 'center', },
             ],
             rows: [],
             status: '',
             files: [],
+            dialogYes: false,
+            dialogNo: false,
         };
     },
 
@@ -75,7 +110,22 @@ export default {
         checkIn(){
             this.files =  this.files.map(x => x.id)
             console.log(this.files)
+
             const token = localStorage.getItem("token")
+            this.axios.post("http://"+this.$store.state.ip+"api/file/check_many_files", 
+            {
+                ids: this.files
+            }, 
+            { headers: {'Authorization': `Bearer ${token}`}})
+                .then((res) => {
+                    console.log(res)
+                    if (res.status == 200)
+                        this.dialogYes = true
+                    else
+                        this.dialogNo = true
+                    this.getData()
+                    this.files=[]
+                })
         },
     },
     mounted() {

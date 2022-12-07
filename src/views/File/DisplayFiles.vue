@@ -26,7 +26,6 @@
                             :page.sync="page" @page-count="pageCount = $event" :hide-default-footer="true"
                             v-if="status == 'OK'">
                             <template v-slot:top>
-
                                 <v-dialog v-model="dialogDelete" max-width="500px">
                                     <v-card>
                                         <v-spacer></v-spacer>
@@ -73,13 +72,19 @@
                             </v-dialog>
                             </template>
                             <template v-slot:[`item.delete`]="{ item }">
-                                <b-button class="button-delete" @click="deleteItem(item)"> حذف  </b-button>
+                                <b-button class="button-delete" @click="deleteItem(item)" v-if="item.status == 'حر'"> حذف  </b-button>
                             </template>
                             <template v-slot:[`item.check_in`]="{ item }">
                                 <b-button class="button-in" @click="inItem(item)" v-if="item.status == 'حر'"> حجز  </b-button>
                             </template>
                             <template v-slot:[`item.check_out`]="{ item }">
                                 <b-button class="button-out" @click="outItem(item)" v-if="(username == item.user_name)"> الغاء حجز  </b-button>
+                            </template>
+                            <template v-slot:[`item.read`]="{ item }">
+                                <b-button class="button-read" @click="read(item)"  v-if="item.status == 'حر'"> قراءة  </b-button>
+                            </template>
+                            <template v-slot:[`item.edit`]="{ item }">
+                                <b-button class="button-edit" @click="edit(item)"  v-if="item.status == 'حر'"> تعديل  </b-button>
                             </template>
                         </v-data-table>
                         <div v-else>
@@ -116,6 +121,8 @@ export default {
                 { text: 'حذف', value: 'delete', align: 'center', },
                 { text: 'حجز', value:'check_in', align: 'center', },
                 { text: 'الغاء حجز', value: 'check_out', align: 'center', },
+                { text: 'قراءة', value: 'read', align: 'center', },
+                { text: 'تعديل', value: 'edit', align: 'center', },
             ],
             rows: [],
             status: '',
@@ -209,7 +216,6 @@ export default {
     color: #2f52ec !important;
     margin-right: 10px
 }
-
 .view .button-in:hover {
     background-color: #2f52ec !important;
     color: white !important;
@@ -223,9 +229,34 @@ export default {
     color: #589c21 !important;
     margin-right: 10px
 }
-
 .view .button-out:hover {
     background-color: #589c21 !important;
+    color: white !important;
+}
+
+.view .button-read {
+    border-radius: 20px !important;
+    background-color: #f7e5f3 !important;
+    font-size: 15px !important;
+    border: none !important;
+    color: #ac2389 !important;
+    margin-right: 10px
+}
+.view .button-read:hover {
+    background-color: #ac2389 !important;
+    color: white !important;
+}
+
+.view .button-edit {
+    border-radius: 20px !important;
+    background-color: #fff3e4 !important;
+    font-size: 15px !important;
+    border: none !important;
+    color: #e2730c !important;
+    margin-right: 10px
+}
+.view .button-edit:hover {
+    background-color: #e2730c !important;
     color: white !important;
 }
 </style>
