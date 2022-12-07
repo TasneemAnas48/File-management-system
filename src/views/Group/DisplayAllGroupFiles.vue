@@ -120,8 +120,8 @@
                                     الغاء حجز </b-button>
                             </template>
                             <template v-slot:[`item.read`]="{ item }">
-                                <a @click="read(item)" :href="url">
-                                    <b-button class="button-read" v-if="item.status == 'حر'"> قراءة
+                                <a  @click="read(item)" :href="url" >
+                                    <b-button class="button-read" v-if="(item.status == 'حر') || ((item.status == 'محجوز') && (username == item.user))"> قراءة
                                     </b-button>
                                 </a>
                             </template>
@@ -224,6 +224,7 @@ export default {
             file: '',
             edit_id: null,
             url: '',
+            user_id:null,
         };
     },
     validations() {
@@ -327,7 +328,7 @@ export default {
             this.file = files
         },
         read(item){
-            let url = "http://" + this.$store.state.ip + "uploads/files/hh/" + item.name
+            let url = "http://" + this.$store.state.ip + "uploads/files/" + item.name
             this.url = url
             return url
         },
@@ -338,13 +339,12 @@ export default {
         editFile() {
             const formData = new FormData()
             formData.append('file', this.file)
-            formData.append('id', this.edit_id)
-            // const token = localStorage.getItem("token")
-            // this.axios.post("http://"+this.$store.state.ip+"api/file", formData, { headers: {'Authorization': `Bearer ${token}`}})
-            //     .then((res) => {
-            //         console.log(res)
-
-            //     })
+            formData.append('user_id', this.user_id)
+            const token = localStorage.getItem("token")
+            this.axios.post("http://"+this.$store.state.ip+"api/file/update/" + this.edit_id, formData, { headers: {'Authorization': `Bearer ${token}`}})
+                .then((res) => {
+                    console.log(res)
+                })
         },
         getData() {
             const token = localStorage.getItem("token")
@@ -359,6 +359,7 @@ export default {
     mounted() {
         this.collection_id = this.$route.params.id
         this.username = localStorage.getItem("name")
+        this.user_id = localStorage.getItem("id")
         // console.log(this.username)
         this.getData()
         this.getFiles()
