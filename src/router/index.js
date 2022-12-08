@@ -101,4 +101,11 @@ router.beforeEach((to, from, next) => {
         next({ name: 'permission-denied' })
     else 
         next()
+
+    const token = localStorage.getItem("token")
+    if ( (to.path !== '/login' && token == '')
+        || (to.path === '/register'  && token == ''))
+        next({ name: 'login' })
+    else 
+        next()
 })
