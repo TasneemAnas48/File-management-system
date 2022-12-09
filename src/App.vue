@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <nav-bar v-if="!['login', 'register', 'permission-denied'].includes($route.name)" />
-        <side-bar v-if="!['login', 'register', 'permission-denied'].includes($route.name)"/>
+        <nav-bar v-if="!['login', 'register', 'permission-denied', 'print-report'].includes($route.name)" />
+        <side-bar v-if="!['login', 'register', 'permission-denied', 'print-report'].includes($route.name)"/>
         <router-view />
     </div>
 </template>

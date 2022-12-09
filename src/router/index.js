@@ -14,6 +14,9 @@ import DisplayAllGroupFiles from "../views/Group/DisplayAllGroupFiles";
 import SystemFile from "../views/File/SystemFile.vue";
 import SystemGroup from "../views/Group/SystemGroup.vue";
 import PermissionDenied from "../views/PermissionDenied.vue";
+import Report from "../views/Report/Report.vue";
+import FileReport from "../views/Report/FileReport.vue";
+import PrintReport from "../views/Report/PrintReport.vue";
 
 Vue.use(VueRouter);
 
@@ -82,6 +85,21 @@ const routes = [
         path: "/permission-denied",
         name: "permission-denied",
         component: PermissionDenied,
+    },
+    {
+        path: "/report",
+        name: "report",
+        component: Report,
+    },
+    {
+        path: "/report-file/:id",
+        name: "report-file",
+        component: FileReport,
+    },
+    {
+        path: "/print-report/:id",
+        name: "print-report",
+        component: PrintReport,
     },
     
 ];
