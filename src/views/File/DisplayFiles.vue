@@ -6,7 +6,7 @@
                     <div class="d-flex justify-content-between align-items-center add">
                         ملفاتي
                         <div class="d-flex justify-content-end ">
-                            <router-link to="/file/admin/all" style="margin-left: 10px" v-if="role=='admin'" >
+                            <router-link to="/file/admin/all" style="margin-left: 10px" v-if="role == 'admin'">
                                 <b-button class="button-view">جميع ملفات النظام</b-button>
                             </router-link>
                             <router-link to="/file/check-in" style="margin-left: 10px">
@@ -87,13 +87,16 @@
                                     الغاء حجز </b-button>
                             </template>
                             <template v-slot:[`item.read`]="{ item }">
-                                <a  @click="read(item)" :href="url" >
-                                    <b-button class="button-read" v-if="(item.status == 'حر') || ((item.status == 'محجوز') && (username == item.user_name))"> قراءة
+                                <a @click="read(item)" :href="url">
+                                    <b-button class="button-read"
+                                        v-if="(item.status == 'حر') || ((item.status == 'محجوز') && (username == item.user_name))">
+                                        قراءة
                                     </b-button>
                                 </a>
                             </template>
                             <template v-slot:[`item.edit`]="{ item }">
-                                <b-button class="button-edit" @click="edit(item)" v-if="(item.status == 'محجوز') && (username == item.user_name)" > تعديل
+                                <b-button class="button-edit" @click="edit(item)"
+                                    v-if="(item.status == 'محجوز') && (username == item.user_name)"> تعديل
                                 </b-button>
                             </template>
                         </v-data-table>
@@ -133,6 +136,34 @@
                                     <v-btn @click="editFile" color="var(--main-color)" text
                                         style="letter-spacing: 0px;font-size:17px">
                                         تعديل
+                                    </v-btn>
+                                    <v-spacer></v-spacer>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                        <v-dialog v-model="dialogYesEdit" max-width="500px">
+                            <v-card>
+                                <v-spacer></v-spacer>
+                                <v-card-title class="justify-content-center" style="padding-top: 30px">
+                                    تم تعديل الملف بنجاح
+                                </v-card-title>
+                                <v-card-actions style="padding-bottom: 30px">
+                                    <v-spacer></v-spacer>
+                                    <v-btn color="var(--main-color)" text @click="(dialogYesEdit = false)">موافق
+                                    </v-btn>
+                                    <v-spacer></v-spacer>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                        <v-dialog v-model="dialogNoEdit" max-width="500px">
+                            <v-card>
+                                <v-spacer></v-spacer>
+                                <v-card-title class="justify-content-center" style="padding-top: 30px">
+                                    لا يمكن تعديل الملف
+                                </v-card-title>
+                                <v-card-actions style="padding-bottom: 30px">
+                                    <v-spacer></v-spacer>
+                                    <v-btn color="var(--main-color)" text @click="(dialogNoEdit = false)">موافق
                                     </v-btn>
                                     <v-spacer></v-spacer>
                                 </v-card-actions>
@@ -185,9 +216,11 @@ export default {
             dialogEdit: false,
             file: '',
             edit_id: null,
-            url:'',
-            role:'',
-            user_id:null,
+            url: '',
+            role: '',
+            user_id: null,
+            dialogNoEdit: false,
+            dialogYesEdit: false,
         };
     },
     validations() {
@@ -247,7 +280,7 @@ export default {
         onFileSelected(files) {
             this.file = files
         },
-        read(item){
+        read(item) {
             let url = "http://" + this.$store.state.ip + "uploads/files/" + item.name
             this.url = url
             return url
@@ -261,9 +294,15 @@ export default {
             formData.append('file', this.file)
             formData.append('user_id', this.user_id)
             const token = localStorage.getItem("token")
-            this.axios.post("http://"+this.$store.state.ip+"api/file/update/" + this.edit_id, formData, { headers: {'Authorization': `Bearer ${token}`}})
+            this.axios.post("http://" + this.$store.state.ip + "api/file/update/" + this.edit_id, formData, { headers: { 'Authorization': `Bearer ${token}` } })
                 .then((res) => {
+                    this.dialogEdit = false
                     console.log(res)
+                    if (res.data.status == "success") {
+                        this.dialogYesEdit = true
+                    }
+                    else if (res.data.status == "error")
+                        this.dialogNoEdit = true
                 })
         },
         getData() {
@@ -273,7 +312,7 @@ export default {
                 .then((res) => {
                     this.status = res.statusText
                     this.rows = res.data.data
-                    console.log(res)
+                    // console.log(res)
                 });
         }
     },
