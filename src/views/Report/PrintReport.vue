@@ -22,7 +22,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -51,12 +50,12 @@ export default {
     methods: {
         getData() {
             const token = localStorage.getItem("token")
-            this.axios.get("http://" + this.$store.state.ip + "api/collection/all_file_to_reserve/" + this.file_id,
+            this.axios.get("http://" + this.$store.state.ip + "api/RepotFiles/" + this.file_id,
                 { headers: { 'Authorization': `Bearer ${token}` } })
                 .then((res) => {
                     this.status = res.statusText
-                    this.rows = res.data
-                    console.log(res.data)
+                    this.rows = res.data.data
+                    console.log(res.data.data)
                 })
                 .finally(() => {
                     window.print()
@@ -66,7 +65,7 @@ export default {
     mounted() {
         this.file_id = this.$route.params.id
         this.role = localStorage.getItem('role')
-        // this.getData()
+        this.getData()
         this.username = localStorage.getItem("name")
         this.user_id = localStorage.getItem("id")
         
